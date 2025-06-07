@@ -1,6 +1,8 @@
 import React from 'react';
 import { CheckCircle, Clock, Shield, Weight } from 'lucide-react';
 import { Skip } from '../types/skip';
+import skipImage from '../assets/images/skip.png';
+
 
 interface SkipCardProps {
   skip: Skip;
@@ -12,11 +14,6 @@ const SkipCard: React.FC<SkipCardProps> = ({ skip, isSelected, onSelect }) => {
   const totalPrice = skip.price_before_vat * (1 + skip.vat / 100);
   const vatAmount = skip.price_before_vat * (skip.vat / 100);
 
-  // Generate skip image URL based on size
-  const getSkipImageUrl = (size: number) => {
-    // Using a placeholder service that provides consistent skip images
-    return `https://images.pexels.com/photos/1108572/pexels-photo-1108572.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&fit=crop`;
-  };
 
   const handleCardClick = (e: React.MouseEvent) => {
     // Only select if clicking the card itself, not the button
@@ -51,7 +48,7 @@ const SkipCard: React.FC<SkipCardProps> = ({ skip, isSelected, onSelect }) => {
       {/* Skip Image */}
       <div className="relative overflow-hidden rounded-t-xl">
         <img
-          src={getSkipImageUrl(skip.size)}
+          src={skipImage}
           alt={`${skip.size} yard skip`}
           className="w-full h-40 sm:h-48 object-cover transition-transform duration-300 group-hover:scale-105"
         />
